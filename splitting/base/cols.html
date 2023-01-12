@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>base-cols</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/splitting/dist/splitting.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/splitting/dist/splitting-cells.css"
+    />
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <div class="col" id="1">1111</div>
+        <div class="col">1111</div>
+      </div>
+      <div>
+        <div class="col" id="2">2222</div>
+        <div class="col">2222</div>
+      </div>
+    </div>
+    <script>
+      const results = Splitting({
+        target: ".container",
+        by: "cols",
+        matching: ".col",
+      });
+
+      results[0].cols[0][0]; // <div id="1" style="--col-index: 0">...</div>
+      results[0].cols[1][0]; // <div style="--col-index: 1">...</div>
+
+      results[0].cols[0][1]; // <div id="2" style="--col-index: 0">...</div>
+      results[0].cols[1][1];
+    </script>
+  </body>
+</html>

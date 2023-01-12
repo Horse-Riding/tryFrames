@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>base- fonts</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/splitting/dist/splitting.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/splitting/dist/splitting-cells.css"
+    />
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+  </head>
+  <body>
+    <div onclick="run()" style="width:200px;height:40px;line-height: 40px;text-align: center;margin-bottom:50px;background:#f0f">运行</div>
+    <!-- line -->
+    <div class="target" >Splitting Splitting Splitting<br /> Text Text Text Text</div>
+    
+    <script>
+        const target = document.querySelector('.target');
+        const results = Splitting({ target: target, by: 'lines' });
+
+        // results[0].el // <div id="target" class="splitting lines" style="--line-total: 1; --word-total: 2">...</div>
+        // results[0].words[0] // <span class="word" data-word="Splitting" style="--word-index: 0">...</span>
+        // results[0].words[1] // <span class="word" data-word="Text" style="--word-index: 1">...</span>
+
+        // results[0].lines[0][0] // <span class="w
+        const run = () => {
+            document.querySelector('.target1').setAttribute("class","target");
+        }
+    </script>
+    <style>
+        @keyframes slide-down {
+            from{
+                transform: translateY(125%);
+                opacity: 0;
+            }
+            to{
+                transform: translateY(0%);
+                opacity: 1;
+            }
+        }
+        .target{
+            font-size:60px;
+        }
+        .target .word{
+            animation:  slide-down 0.5s forwards;
+            animation-delay: calc(0.2s + (0.1s * var(--word-index)));
+            opacity: 0;
+        }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>base-cells</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/splitting/dist/splitting.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/splitting/dist/splitting-cells.css"
+    />
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+  </head>
+  <body>
+    <div class="image">
+      <img src="http://unsplash.it/200/200?random" />
+    </div>
+    <script>
+      const results = Splitting({
+        target: ".image",
+        by: "cells",
+        image: true,
+        cols: 2,
+        rows: 2,
+      });
+
+      results[0].el; // <div class="image splitting cells" style="background-image: url(http://unsplash.it/200/200?random); --cell-total: 4; --row-total: 2; --col-total: 2;">...</div>
+      results[0].cells[0]; // <span class="cell" style="--cell-index: 0; --row-index: 0; --col-index: 0"></span>
+      results[0].cells[1]; // <span class="cell" style="--cell-index: 1; --row-index: 0; --col-index: 1"></span>
+      results[0].cells[3]; // <span class="cell" style="--cell-index: 2; --row-index: 1; --col-index: 0"></span>
+      results[0].cells[4]; // <span class="cell" style="--cell-index: 3; --row-index: 1;
+    </script>
+  </body>
+</html>
